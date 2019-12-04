@@ -3,7 +3,7 @@ set -e
 
 # PHP and extensions version
 PHPREDIS_VERSION=5.0.0
-PHP_VERSION=7.1.30
+PHP_VERSION=7.2.25
 RE2C_VERSION=1.1.1
 IGBINARY_VERSION=3.0.1
 XDEBUG_VERSION=2.7.2
@@ -22,7 +22,7 @@ rm -rf /home/worker/src/re2c*
 echo "---------- Install PHP... ----------"
 cd /home/worker/src
 mkdir -p /home/worker/php
-wget -q -O php-${PHP_VERSION}.tar.xz https://mrzfiles.oss-cn-shenzhen.aliyuncs.com/resource/php-${PHP_VERSION}.tar.xz
+wget -q -O php-${PHP_VERSION}.tar.xz https://www.php.net/distributions/php-${PHP_VERSION}.tar.xz
 xz -d php-${PHP_VERSION}.tar.xz
 tar -xvf php-${PHP_VERSION}.tar
 cd php-${PHP_VERSION}

@@ -5,7 +5,7 @@
 * Alpine-3.9
 * Supervisor
 * re2c-1.1.1
-* PHP-7.1.30
+* PHP-7.2.25
 * PHP-Redis-5.0.0
 * PHP-Igbinary-3.0.1
 * PHP-Xdebug-2.7.2
