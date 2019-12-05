@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-SRC_DIR=/home/worker/src
-
 # Init base environment
 echo "---------- Preparing APT repositories ----------"
 cp /etc/apk/repositories /etc/apk/repositories.bak
@@ -52,7 +50,9 @@ apk add --no-cache --virtual .fetch-deps \
         libjpeg-turbo-dev \
         libxslt-dev \
         freetype-dev \
-        gettext-dev
+        gettext-dev  \
+        libevent-dev \
+        nghttp2-dev
 
 # Config timezone/passwd/networking
 echo "---------- Config timezone/passwd/networking... ----------"
@@ -67,5 +67,3 @@ set -x \
 echo "worker:worker" | chpasswd
 echo 'worker  ALL=(ALL)  NOPASSWD: ALL' >> /etc/sudoers
 
-# mkdir src dir
-mkdir -p ${SRC_DIR}

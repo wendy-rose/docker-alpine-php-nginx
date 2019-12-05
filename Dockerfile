@@ -1,6 +1,10 @@
 FROM alpine:3.10
 MAINTAINER wendylin6970@gmail.com
 
+# Add source
+RUN mkdir -p /home/worker/src
+ADD src /home/worker/src
+
 ADD build /build
 
 RUN sh /build/prepare.sh && \

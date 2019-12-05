@@ -5,9 +5,6 @@ NGINX_VERSION=1.16.0
 NGINX_INSTALL_DIR=/home/worker/nginx
 
 cd /home/worker/src
-wget -q -O nginx-${NGINX_VERSION}.tar.gz http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
-wget -q -O nginx-http-concat.zip https://github.com/alibaba/nginx-http-concat/archive/master.zip
-wget -q -O nginx-logid.zip https://github.com/pinguo-liuzhaohui/nginx-logid/archive/master.zip
 tar zxf nginx-${NGINX_VERSION}.tar.gz
 unzip nginx-http-concat.zip -d nginx-http-concat
 unzip nginx-logid.zip -d nginx-logid
