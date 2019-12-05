@@ -2,24 +2,40 @@
 
 ## 镜像内容
 
-* Alpine-3.9
+* Alpine-3.10
 * Supervisor
-* re2c-1.1.1
+* Re2c-1.1.1
+* ImageMagick-7.0.8
+* Yaml-0.2.2
+* Hiredis-0.14.0
+* Libmemcached-1.0.18
 * PHP-7.2.25
 * PHP-Redis-5.0.0
+* PHP-Memcached-3.1.3
 * PHP-Igbinary-3.0.1
 * PHP-Xdebug-2.7.2
+* PHP-Swoole-4.4.12
+* PHP-Yaml-2.0.4
+* PHP-Mongodb-1.5.5
+* PHP-Yaf-3.0.8
+* PHP-Imagick-3.4.4
+* PHP-Inotify-2.0.0
+* PHP-Event-2.5.3
 * Nginx-1.16.0
 
 ## 安装与运行
 
 ### 在线仓库
 
-`docker pull registry.cn-hangzhou.aliyuncs.com/base-php/alpine-php-nginx:1.0`
+`docker pull registry.cn-hangzhou.aliyuncs.com/base-php/alpine-php-nginx:3.0`
+
+### 构建
+
+从github拉取代码后，在根目录执行`docker build -t [image name]:[tag] .`
 
 ### 运行
 
-在线拉取后，可以通过`docker images`查看镜像，整个镜像大小为353M。
+在线拉取后，可以通过`docker images`查看镜像，整个镜像大小为524M。
 
 然后执行`docker run -d --name=[your container name] -p 80:80 [image name]`，
 
@@ -70,7 +86,7 @@ su - worker -s /bin/sh -c "/usr/bin/supervisord -n -c /etc/supervisord.conf"
 ## 打包项目镜像
 
 这里主要讲如何利用此镜像将项目打包成一个镜像。首先在项目的根目录创建一个docker文件夹和Dockerfile的文件。其中docker文件主要是放项目的Nginx的server配置文件，
-Dockerfile是项目的镜像构建文件。下面我以交易支付中心为例子说一下。
+Dockerfile是项目的镜像构建文件。下面我以laravel为例子说一下。
 
 * 创建docker文件，并且在里面创建trade-pay.conf文件，文件内容如下：
 
@@ -113,7 +129,7 @@ server {
 * 创建Dockerfile文件，内容如下：
 
 ```dockerfile
-FROM registry.cn-hangzhou.aliyuncs.com/base-php/alpine-php-nginx:1.0
+FROM registry.cn-hangzhou.aliyuncs.com/base-php/alpine-php-nginx:3.0
 MAINTAINER wendylin6970@gmail.com
 
 # source codes
@@ -174,7 +190,7 @@ version: '2'
 services:
   php:
     restart: always
-    image: registry.cn-hangzhou.aliyuncs.com/base-php/alpine-php-nginx:1.0
+    image: registry.cn-hangzhou.aliyuncs.com/base-php/alpine-php-nginx:3.0
     container_name: web
     volumes:
     - /d/WWW:/home/worker/data/www  # 将宿主机的代码目录映射到容器的www目录
